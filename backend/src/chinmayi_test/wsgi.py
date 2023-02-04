@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "$$TODO(malx.settings)")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "chinmayi_test.settings")
 
 application = get_wsgi_application()

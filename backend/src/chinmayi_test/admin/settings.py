@@ -4,7 +4,7 @@ Django settings for Project (Admin).
 
 from __future__ import annotations
 
-from malx.settings_base import *
+from chinmayi_test.settings_base import *
 
 
 # Application definition
@@ -25,7 +25,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
 ] + MIDDLEWARE
 
-TEMPLATES[0]['DIRS'] = [os.path.join(BASE_DIR, '$$TODO(malx)/admin/templates')]
+TEMPLATES[0]['DIRS'] = [os.path.join(BASE_DIR, 'chinmayi_test/admin/templates')]
 
 
 # SecurityMiddleware

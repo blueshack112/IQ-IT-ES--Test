@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import annotations
 
-from malx.settings_base import *
+from chinmayi_test.settings_base import *
 
 NOTEBOOK_ARGUMENTS = [
     "--ip",

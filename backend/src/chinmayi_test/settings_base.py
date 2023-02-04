@@ -35,6 +35,14 @@ SECRET_KEY = "django-insecure-57)$=8mad_$%c^jokce2!*ecbaw&pkgqay0bx_9$5)m0#&)@s!
 DEBUG = get_bool_env("DEBUG", True)
 SERVICE_ID = os.environ.get("SERVICE_ID", "api")
 
+
+def is_hosted_on_docker():
+    """Check if this app is being run through docker or directly on a host"""
+    if not os.environ.get("SERVICE_ID", None):
+        return False
+    return True
+
+
 # ALLOWED_HOSTS = (
 #     None
 #     if not os.environ.get("ALLOWED_HOSTS", None)
@@ -47,10 +55,6 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
-    "accounts",
-    "vulnerability_test",
-    "packaged_test",
-    "execution",
     # Django
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -65,7 +69,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "$$TODO(malx.urls)"
+ROOT_URLCONF = "chinmayi_test.urls"
 
 TEMPLATES = [
     {
@@ -83,7 +87,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "$$TODO(malx).wsgi.application"
+WSGI_APPLICATION = "chinmayi_test.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
@@ -91,8 +95,8 @@ WSGI_APPLICATION = "$$TODO(malx).wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.environ.get("POSTGRES_DB", "$$TODO(malx)"),
-        "USER": os.environ.get("POSTGRES_USER", "$$TODO(malx_user)"),
+        "NAME": os.environ.get("POSTGRES_DB", "chinmayi-test"),
+        "USER": os.environ.get("POSTGRES_USER", "chinmayi-user"),
         "PASSWORD": os.environ.get("POSTGRES_PASSWORD", "strong_password_123"),
         "HOST": os.environ.get("DJANGO_SETTINGS_POSTGRES_DB_HOST", "127.0.0.1"),
         "PORT": os.environ.get("DJANGO_SETTINGS_POSTGRES_DB_PORT", "5454"),
@@ -148,8 +152,6 @@ HOST_MEDIA_DIR_ABS_PATH = os.path.join(HOST_DATA_DIR_ABS_PATH, "media")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-AUTH_USER_MODEL = "accounts.User"
-
 # start shell plus with ipython by default
 SHELL_PLUS = "ipython"
 NOTEBOOK_ARGUMENTS = []
@@ -162,10 +164,10 @@ CELERY_TASK_SOFT_TIME_LIMIT = int(
 CELERY_TASK_TIME_LIMIT = int(os.environ.get("CELERY_TASK_TIME_LIMIT", 60 * 60))
 
 # Queue
-CELERY_TASK_DEFAULT_QUEUE = "$$TODO(malx)-default"
+CELERY_TASK_DEFAULT_QUEUE = "chinmayi-default"
 
 # Load admin app?
 LOAD_ADMIN_APP = SERVICE_ID != "admin" and get_bool_env("LOAD_ADMIN_APP", False)
 
-if LOAD_ADMIN_APP:
-    from malx.admin.settings import *
+if LOAD_ADMIN_APP or not is_hosted_on_docker():
+    from chinmayi_test.admin.settings import *

@@ -18,31 +18,29 @@ services:
       - pgdata:/var/lib/postgresql/data
 
   api:
-    image: $$TODO
+    image: chinmayi-test/app-backend
     entrypoint: /entrypoints/wait_for_db.sh
     volumes:
       - ./backend/src:/code
       - ./data:/var/www/data/
-      - /var/run/docker.sock:/var/run/docker.sock
     depends_on:
       - db
     environment:
       SERVICE_ID: api
 
   admin:
-    image: $$TODO
+    image: chinmayi-test/app-backend
     entrypoint: /entrypoints/wait_for_db.sh
     volumes:
       - ./backend/src:/code
       - ./data:/var/www/data/
-      - /var/run/docker.sock:/var/run/docker.sock
     depends_on:
       - db
     environment:
       SERVICE_ID: admin
 
   celery:
-    image: $$TODO
+    image: chinmayi-test/app-backend
     entrypoint: /entrypoints/wait_for_db.sh
     depends_on:
       - db
@@ -50,7 +48,6 @@ services:
     volumes:
       - ./backend/src:/code
       - ./data:/var/www/data/
-      - /var/run/docker.sock:/var/run/docker.sock
     environment:
       SERVICE_ID: celery
 
@@ -58,21 +55,14 @@ services:
     image: redis:7-alpine
 
   notebook:
-    image: $$TODO
+    image: chinmayi-test/app-backend
     entrypoint: /entrypoints/wait_for_db.sh
     volumes:
       - ./backend/src:/code
       - ./data:/var/www/data/
-      - /var/run/docker.sock:/var/run/docker.sock
     depends_on:
       - db
     environment:
       SERVICE_ID: notebook
       DJANGO_ALLOW_ASYNC_UNSAFE: 1
       ALLOW_ROOT: 1
-
-  nginx:
-    image: nginx:1.23.2-perl
-    depends_on:
-      - frontend
-      - api

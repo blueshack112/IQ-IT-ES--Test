@@ -4,7 +4,7 @@ Django settings for Project (API).
 
 from __future__ import annotations
 
-from malx.settings_base import *
+from chinmayi_test.settings_base import *
 from datetime import timedelta
 
 # Application definition
@@ -25,9 +25,9 @@ MIDDLEWARE.insert(0, "corsheaders.middleware.CorsMiddleware")
 REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": ("utils.drf.renderers.CamelCaseJSONRenderer",),
     "DEFAULT_PARSER_CLASSES": ("utils.drf.parsers.CamelCaseJSONParser",),
-    "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
-    ],
+    # "DEFAULT_AUTHENTICATION_CLASSES": [
+    #     "rest_framework_simplejwt.authentication.JWTAuthentication",
+    # ],
     # "DEFAULT_VERSIONING_CLASS": "rest_framework.versioning.NamespaceVersioning",
     # "DEFAULT_VERSION": "v1",
     "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",
@@ -69,4 +69,4 @@ CORS_EXPOSE_HEADERS = [
     "Content-Disposition-Filename",
 ]
 
-CORS_ORIGIN_WHITELIST = '$$TODO("http://malx.tpsc.tech",)'
+CORS_ORIGIN_WHITELIST = ["http://localhost"]

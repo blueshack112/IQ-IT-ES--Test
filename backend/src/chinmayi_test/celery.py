@@ -3,9 +3,9 @@ from celery import Celery
 from django.conf import settings
 
 # set the default Django settings module for the 'celery' program.
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "$$TODO(malx).settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "chinmayi_test.settings")
 
-app = Celery('$$TODO"malx"')
+app = Celery('chinmayi_test')
 
 app.config_from_object("django.conf:settings", namespace="CELERY")
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)

@@ -11,16 +11,16 @@ from drf_yasg import openapi
 from rest_framework import permissions
 
 schema_view = get_schema_view(
-   openapi.Info(
-      title="$$TODO(MalX REST API)",
-      default_version='v1',
-   ),
-   public=True,
-   permission_classes=[permissions.AllowAny],
+    openapi.Info(
+        title="(Chinmayi Test REST API)",
+        default_version="v1",
+    ),
+    public=True,
+    permission_classes=[permissions.AllowAny],
 )
 
 # noinspection PyUnresolvedReferences
 urlpatterns = [
-    path("", schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    path("v1/", include("$$TODO(malx.api.urls_v1)")),
+    path("", schema_view.with_ui("swagger", cache_timeout=0), name="schema-swagger-ui"),
+    path("v1/", include("chinmayi_test.api.urls_v1")),
 ]

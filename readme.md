@@ -1,9 +1,6 @@
-# $$TODO(Malx) #
+# Incomplete Template #
 
 ### What is this repository for? ###
-
-MalX is a pen-testing platform that allows users to download penetration tests and packages (combination of multiple
-tests) in executable file formats to test their systems against specific vulnerabilities.
 
 ### Development
 

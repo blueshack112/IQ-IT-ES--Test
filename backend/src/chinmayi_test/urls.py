@@ -18,17 +18,16 @@ from django.contrib import admin
 from django.urls import path
 
 urls_conf = None
-if settings.SERVICE_ID == 'admin':
-    from malx.admin import urls as admin_urls_conf
+if settings.SERVICE_ID == "admin":
+    from chinmayi_test.admin import urls as admin_urls_conf
+
     urls_conf = admin_urls_conf
-elif settings.SERVICE_ID == 'api':
-    from malx.api import urls as api_urls_conf
+elif settings.SERVICE_ID == "api":
+    from chinmayi_test.api import urls as api_urls_conf
+
     urls_conf = api_urls_conf
 
-urlpatterns = getattr(urls_conf, 'urlpatterns', [])
+urlpatterns = getattr(urls_conf, "urlpatterns", [])
 
 if settings.LOAD_ADMIN_APP:
-    urlpatterns += path('admin/', admin.site.urls),
-
-
-
+    urlpatterns += (path("admin/", admin.site.urls),)

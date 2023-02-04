@@ -2,7 +2,7 @@ import os
 from importlib import import_module
 
 service_id = os.environ.get("SERVICE_ID", "api").replace("-", "_")
-settings = f"$$TODO(malx).{service_id}.settings"
+settings = f"chinmayi_test.{service_id}.settings"
 
 print(f"Load settings `{settings}`")
 
