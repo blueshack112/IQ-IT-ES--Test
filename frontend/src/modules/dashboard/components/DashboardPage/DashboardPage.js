@@ -13,7 +13,6 @@ const DashboardPage = () => {
     const action = compileGetPricePointsListAction(currency);
     apiCaller(action.payload.path, action)
       .then((response) => {
-        console.log('reloaded');
         setPricePoints(response);
       })
       .catch((error) => console.log(error));

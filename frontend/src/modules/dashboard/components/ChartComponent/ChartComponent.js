@@ -12,7 +12,7 @@ const ChartComponent = (props: Props) => {
   const series = [];
   data.map((entry, index) => {
     const date = new Date(entry.createdAt);
-    if (index % 5 === 0) {
+    if (index % 3 === 0) {
       categories.push(`${date.getHours()}:${date.getMinutes()}`);
       series.push(entry.valueNow);
     }
