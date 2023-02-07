@@ -31,3 +31,4 @@ dev-doc/
 other_modules/
 /backend/src/vulnerability_test/docs/
 /data/
+celerybeat-schedule

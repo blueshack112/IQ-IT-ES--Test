@@ -55,6 +55,8 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    "accounts",
+    "data_collection",
     # Django
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -168,6 +170,9 @@ CELERY_TASK_DEFAULT_QUEUE = "chinmayi-default"
 
 # Load admin app?
 LOAD_ADMIN_APP = SERVICE_ID != "admin" and get_bool_env("LOAD_ADMIN_APP", False)
+
+# BTC Exchange Rate API
+BTC_EXCHANGE_RATE_API_URL = "https://blockchain.info/ticker"
 
 if LOAD_ADMIN_APP or not is_hosted_on_docker():
     from chinmayi_test.admin.settings import *

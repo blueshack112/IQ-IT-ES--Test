@@ -51,6 +51,18 @@ services:
     environment:
       SERVICE_ID: celery
 
+  celery-beat:
+    image: chinmayi-test/app-backend
+    volumes:
+      - ./backend/src:/code
+      - ./data:/var/www/data/
+    depends_on:
+      - db
+      - redis_queue
+      - celery
+    environment:
+      SERVICE_ID: celery-beat
+
   redis_queue:
     image: redis:7-alpine
 

@@ -29,11 +29,11 @@ test: docker-build-backend docker-run-test-backend docker-run-test-frontend
 
 
 server-install: docker-build-backend docker-migrate-database post-install-setup
-post-install-setup: docker-setup-superuser
-down-then-install: stop-server server-install
-destroy-then-install: destroy server-install
+post-install-setup: docker-setup-superuser docker-prefill
 stop-server: docker-down
 destroy: docker-down-w-volumes
+down-then-install: stop-server server-install
+destroy-then-install: destroy server-install
 
 
 docker-build-backend:
@@ -71,3 +71,6 @@ docker-run-test-backend:
 
 docker-run-test-frontend:
 	docker compose -f docker-compose.yml -f $(OVERRIDE_FILE_NAME) run --rm frontend bash -c "yarn test --watchAll=false && yarn typecheck && yarn lint"
+
+docker-prefill:
+	docker compose -f docker-compose.yml -f $(OVERRIDE_FILE_NAME) run --rm api python manage.py fillcurrencydata

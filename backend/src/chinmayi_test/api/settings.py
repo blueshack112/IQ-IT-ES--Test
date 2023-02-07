@@ -16,6 +16,7 @@ INSTALLED_APPS += [
     "drf_yasg",
 ]
 
+
 MIDDLEWARE.insert(0, "corsheaders.middleware.CorsMiddleware")
 
 # django-rest-framework settings

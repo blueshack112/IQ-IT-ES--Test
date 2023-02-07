@@ -29,7 +29,12 @@ services:
       - "8001:8001"
 
   celery:
-    command: [ "celery", "-A", "chinmayi", "worker", "-l", "INFO", "-Q", "chinmayi-default)" ]
+    command: [ "celery", "-A", "chinmayi_test", "worker", "-l", "INFO", "-Q", "chinmayi-default" ]
+    env_file:
+      - app.default.env
+
+  celery-beat:
+    command: [ "celery", "-A", "chinmayi_test", "beat", "-l", "info" ]
     env_file:
       - app.default.env
 

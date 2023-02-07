@@ -19,10 +19,12 @@ djangorestframework-simplejwt==5.2.2
 drf-yasg==1.21.4
 idna==3.4
 inflection==0.5.1
+ipython==8.9.0
 itypes==1.2.0
 Jinja2==3.1.2
 kombu==5.2.4
 MarkupSafe==2.1.2
+notebook==6.5.2
 packaging==23.0
 Pillow==9.4.0
 prompt-toolkit==3.0.36
